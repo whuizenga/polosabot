@@ -1,0 +1,19 @@
+{
+  "name": "polosabot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:whuizenga/polosabot.git",
+  "author": "William Huizenga <will.huizenga@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
