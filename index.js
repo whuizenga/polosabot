@@ -25,6 +25,9 @@ client.on('message', msg => {
     case 'hello':
       client.commands.get('hello').execute(msg, args)
       break
+    case 'reactionrole':
+      client.commands.get('reactionrole').execute(msg, args, Discord, client)
+      break
     default:
       console.log(`Command "${command}" not found.`)
   }

@@ -1,7 +1,7 @@
 const helloCommand = {
   name: 'hello',
   description: 'Responds to the user saying Hello',
-  execute: (message, args) => {
+  execute: (message) => {
     message.reply('Hello!')
   }
 }
