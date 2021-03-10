@@ -45,7 +45,7 @@ const reactionRole = {
   name: 'reactionrole',
   description: 'Sets up the reaction role message',
   execute: async (message, args, Discord, client) => {
-    const channel = '730498069396979857'
+    const channel = process.env.REACTION_CHANNEL_ID
 
     Object.values(roles).forEach((role) => {
       role.role = message.guild.roles.cache.find(r => r.id === role.roleId)
