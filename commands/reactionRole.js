@@ -44,15 +44,13 @@ const roles = {
 const reactionRole = {
   name: 'reactionrole',
   description: 'Sets up the reaction role message',
-  execute: async (message, args, Discord, client) => {
+  execute: async (message, createMessage = false, Discord, client) => {
     const channel = process.env.REACTION_CHANNEL_ID
 
-    const guild = message.guild
-
-    if (!guild.available) return
+    const guild = client.guilds.cache.get(process.env.SERVER_ID)
 
     Object.values(roles).forEach((role) => {
-      const guildRole = message.guild.roles.cache.find(r => r.id === role.roleId)
+      const guildRole = guild.roles.cache.find(r => r.id === role.roleId)
 
       if (!guildRole) {
         console.log(`Failed to find Role for ${role.name}`)
@@ -61,22 +59,24 @@ const reactionRole = {
       }
     })
 
-    const roleMessages = Object.values(roles).map(role => (
-      `**${role.emojiId} ${role.name}**`
-    ))
+    if (createMessage || (message.channel && message.channel.id !== channel)) {
+      const roleMessages = Object.values(roles).map(role => (
+        `**${role.emojiId} ${role.name}**`
+      ))
 
-    const embed = new Discord.MessageEmbed()
-      .setColor('#e42643')
-      .setTitle('Roles')
-      .setDescription(
-        'React below to get a role\n\n' + roleMessages.join('\n')
-      )
+      const embed = new Discord.MessageEmbed()
+        .setColor('#e42643')
+        .setTitle('Roles')
+        .setDescription(
+          'React below to get a role\n\n' + roleMessages.join('\n')
+        )
+  
+      const messageEmbed = await message.channel.send(embed)
 
-    const messageEmbed = await message.channel.send(embed)
-
-    Object.values(roles).forEach((role) => {
-      messageEmbed.react(role.emojiId)
-    })
+      Object.values(roles).forEach((role) => {
+        messageEmbed.react(role.emojiId)
+      })
+    }
 
     client.on('messageReactionAdd', async(reaction, user) => {
       if (reaction.message.partial) await reaction.message.fetch()
