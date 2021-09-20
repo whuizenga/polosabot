@@ -2,17 +2,17 @@ const roles = {
   pf: {
     name: 'Party Finder',
     roleId: '841727270976225280',
-    emojiId: '<:pf:888218795750092820>',
+    emojiId: '<:pf:888212102479757353>',
   },
   expert: {
     name: 'Expert Roulette',
     roleId: '888199752305483876',
-    emojiId: '<:expert:888218874875633734>',
+    emojiId: '<:expert:888214378971811870>',
   },
   roulettes: {
     name: 'Roulettes',
     roleId: '883924511827836928',
-    emojiId: '<:roulettes:888218838276132894>',
+    emojiId: '<:roulettes:888211646370164747>',
   },
 }
 
