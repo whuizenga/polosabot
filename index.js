@@ -1,6 +1,6 @@
 require('dotenv').config()
 const Discord = require('discord.js')
-const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]})
+const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] })
 
 client.commands = new Discord.Collection()
 const commands = require('./commands')
@@ -22,12 +22,15 @@ client.on('message', msg => {
   const args = msg.content.slice(prefix.length).split(/ +/)
   const command = args.shift().toLowerCase()
 
-  switch(command) {
+  switch (command) {
     case 'hello':
       client.commands.get('hello').execute(msg, args)
       break
     case 'reactionrole':
       client.commands.get('reactionrole').execute(msg, true, Discord, client)
+      break
+    case 'ffxivreactionrole':
+      client.commands.get('ffxivreactionrole').execute(msg, true, Discord, client)
       break
     default:
       console.log(`Command "${command}" not found.`)
