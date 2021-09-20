@@ -1,4 +1,4 @@
-const gameRoles = {
+const roles = {
   ffxiv: {
     name: 'Final Fantasy XIV',
     roleId: '647602091954798592',
@@ -46,7 +46,7 @@ const reactionRole = {
 
     const guild = client.guilds.cache.get(process.env.SERVER_ID)
 
-    Object.values(gameRoles).forEach((role) => {
+    Object.values(roles).forEach((role) => {
       const guildRole = guild.roles.cache.find(r => r.id === role.roleId)
 
       if (!guildRole) {
@@ -57,7 +57,7 @@ const reactionRole = {
     })
 
     if (createMessage || (message.channel && message.channel.id !== channel)) {
-      const roleMessages = Object.values(gameRoles).map(role => (
+      const roleMessages = Object.values(roles).map(role => (
         `**${role.emojiId} ${role.name}**`
       ))
 
@@ -70,7 +70,7 @@ const reactionRole = {
 
       const messageEmbed = await message.channel.send(embed)
 
-      Object.values(gameRoles).forEach((role) => {
+      Object.values(roles).forEach((role) => {
         messageEmbed.react(role.emojiId)
       })
     }
@@ -82,8 +82,8 @@ const reactionRole = {
       if (!reaction.message.guild) return
 
       if (reaction.message.channel.id === channel) {
-        if (gameRoles[reaction.emoji.name]) {
-          const role = gameRoles[reaction.emoji.name]
+        if (roles[reaction.emoji.name]) {
+          const role = roles[reaction.emoji.name]
 
           if (role.emojiId.includes(reaction.emoji.id)) {
             await reaction.message.guild.members.cache.get(user.id).roles.add(role.role)
