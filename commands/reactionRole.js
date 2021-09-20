@@ -27,12 +27,12 @@ const roles = {
   pokemon: {
     name: 'Pokémon',
     roleId:'881390854521114655',
-    emojiId: '<:pokemon:888218743451291679>',
+    emojiId: '<:pokemon:888209291343986738>',
   },
   mc: {
     name: 'Minecraft',
     roleId: '888183801140903996',
-    emojiId: '<:mc:888218698899419146>',
+    emojiId: '<:mc:888205163385470996>',
   },
 }
 
