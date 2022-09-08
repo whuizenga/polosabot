@@ -27,11 +27,16 @@ const gameRoles = {
   pokemon: {
     name: 'Pokémon',
     roleId:'881390854521114655',
+<<<<<<< HEAD
     emojiId: '<:pokemon:888218743451291679>',
+=======
+    emojiId: '<:pokemon:888209291343986738>',
+>>>>>>> a65f50a425bcfd7187f4742743aa186d8ce76348
   },
   mc: {
     name: 'Minecraft',
     roleId: '888183801140903996',
+<<<<<<< HEAD
     emojiId: '<:mc:888218698899419146>',
   },
 }
@@ -53,8 +58,13 @@ const ffxivRoles = {
     name: 'Roulettes',
     roleId: '883924511827836928',
     emojiId: '<:roulettes:888218838276132894>',
+=======
+    emojiId: '<:mc:888205163385470996>',
+>>>>>>> a65f50a425bcfd7187f4742743aa186d8ce76348
   },
 }
+
+const gamerRole = '836630061675184179'
 
 const reactionRole = {
   name: 'reactionrole',
@@ -85,7 +95,7 @@ const reactionRole = {
         .setDescription(
           'React below to get a role\n\n' + roleMessages.join('\n')
         )
-  
+
       const messageEmbed = await message.channel.send(embed)
 
       Object.values(gameRoles).forEach((role) => {
@@ -187,6 +197,7 @@ const ffxivReactionRole = {
 
           if (role.emojiId.includes(reaction.emoji.id)) {
             await reaction.message.guild.members.cache.get(user.id).roles.add(role.role)
+            await reaction.message.guild.members.cache.get(user.id).roles.add(gamerRole)
           }
         }
       }
@@ -202,9 +213,15 @@ const ffxivReactionRole = {
         if (reaction.message.channel.id === channel) {
           if (roles[reaction.emoji.name]) {
             const role = roles[reaction.emoji.name]
-  
+
             if (role.emojiId.includes(reaction.emoji.id)) {
               await reaction.message.guild.members.cache.get(user.id).roles.remove(role.role)
+              if(reaction.message.guild.members.cache.get(user.id).roles.cache.some(role=>['ffxiv','wow','acnh','gi','vh','mc','pokemon',].includes(role.name)) === true)  {
+                  await reaction.message.guild.members.cache.get(user.id).roles.add(gamerRole)
+                }
+                else {
+                  await reaction.message.guild.members.cache.get(user.id).roles.remove(gamerRole)
+                }
             }
           }
         }
