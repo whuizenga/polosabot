@@ -33,9 +33,6 @@ client.on('message', msg => {
     case 'reactionrole':
       client.commands.get('reactionrole').execute(msg, true, Discord, client)
       break
-    case 'ffxivreactionrole':
-      client.commands.get('ffxivreactionrole').execute(msg, true, Discord, client)
-      break
     default:
       console.log(`Command "${command}" not found.`)
   }
