@@ -6,7 +6,7 @@
   "author": "William Huizenga <will.huizenga@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^14.3.0",
+    "discord.js": "^12.5.1",
     "dotenv": "^16.0.2"
   },
   "scripts": {
