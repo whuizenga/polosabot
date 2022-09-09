@@ -2,7 +2,7 @@ require('dotenv').config()
 const Discord = require('discord.js')
 
 const client = new Discord.Client({
-  intents: [Discord.GatewayIntentBits.Guilds],
+  // intents: [Discord.GatewayIntentBits.Guilds],
   partials: ["MESSAGE", "CHANNEL", "REACTION"],
 })
 
@@ -20,7 +20,8 @@ client.on('ready', () => {
 
 const prefix = '!'
 
-client.on('message', msg => {
+client.on('message', (msg) => {
+  console.log('Message Received', msg.content)
   if (!msg.content.startsWith(prefix) || msg.author.bot) return
 
   const args = msg.content.slice(prefix.length).split(/ +/)
