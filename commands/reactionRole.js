@@ -116,7 +116,7 @@ const reactionRole = {
   
             if (role.emojiId.includes(reaction.emoji.id)) {
               await reaction.message.guild.members.cache.get(user.id).roles.remove(role.role)
-              if(reaction.message.guild.members.cache.get(user.id).roles.cache.some(role=>['ffxiv','wow','acnh','gi','vh','mc','pokemon',].includes(role.name)) === true)  {
+              if(reaction.message.guild.members.cache.get(user.id).roles.cache.some(role=>['ffxiv','wow','acnh','pokemon','fhx',].includes(role.name)) === true)  {
                   await reaction.message.guild.members.cache.get(user.id).roles.add(gamerRole)
                 }
                 else {
